@@ -1,8 +1,18 @@
-# nvim-lsp-file-operations
+# nvim-lsp-file-operations (Fork)
 
-`nvim-lsp-file-operations` is a Neovim plugin that adds support for file operations using built-in [LSP
+This is a **fork** of `nvim-lsp-file-operations` is a Neovim plugin that adds support for file operations using built-in [LSP
 support](https://neovim.io/doc/user/lsp.html).
 This plugin works by subscribing to events emitted by [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua), [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) and [triptych](https://github.com/simonmclean/triptych.nvim). But other integrations are possible.
+
+### What's different in this fork?
+
+- Replaced deprecated Neovim API functions:
+  - `vim.lsp.get_active_clients()` → `vim.lsp.get_clients()`
+  - Updated usage of `vim.validate` to future-proof for Neovim 1.0+
+- Targeted for use with Neovim 0.12 and newer
+- No guarantee of backwards compatibility with older Neovim versions
+
+> **Credit:** Full credit goes to [@antosha417](https://github.com/antosha417) for the original plugin and architecture. This fork only includes minor compatibility fixes for future versions of Neovim.
 
 ## Features
 
@@ -90,6 +100,7 @@ require("lsp-file-operations").setup {
   timeout_ms = 10000,
 }
 ```
+
 Some LSP servers also expect to be informed about the extended client capabilities.
 If you use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) you can configure the default client capabilities that will
 be sent to all servers like this:
